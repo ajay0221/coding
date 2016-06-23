@@ -16,17 +16,14 @@ int main(void) {
     for ( int i = 0; i < n; i++ ) {
         cin >> arr[i]; 
     }
-    for ( int i = 0; i < n; i++ ) {
-        int min_val = arr[i];
-        int min_index = i;
-        for ( int j = i+1; j < n; j++ ) {
-            if ( min_val > arr[j] ) {
-                min_val = arr[j];
-                min_index = j;
-            }
+    for ( int i = 1; i < n; i++ ) {
+        int j = i;
+        while ( j > 0 && arr[j-1] > arr[j] ) {
+            int temp = arr[j];
+            arr[j] = arr[j-1];
+            arr[j-1] = temp;
+            j--;
         }
-        arr[min_index] = arr[i];
-        arr[i] = min_val;
         //printArray(arr, n);
     }
     printArray(arr, n);
